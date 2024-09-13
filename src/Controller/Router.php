@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Controller\payload\Request;
+use Controller\payload\Response;
 use Function\Common\Common;
 
 class Router
@@ -64,7 +66,10 @@ class Router
         }
 
         //TODO: Implement DI so container decides what dependencies specific controller has
-        $controller = new $className();
+        $request = new Request();
+        $response = new Response();
+
+        $controller = new $className($request, $response);
         $method = $this->activeRoute['classMethod'];
         return call_user_func([$controller, $method]);
     }
