@@ -50,6 +50,10 @@ class Router
             }
         }
 
+        if (!isset($this->activeRoute['version'])) {
+            throw new \Exception("Route $requestUriPath not found");
+        }
+
         $className = match ($this->activeRoute['version']) {
             'v1' => self::VALUE_V1_NAMESPACE . $this->activeRoute['className'],
             'v2' => self::VALUE_V2_NAMESPACE . $this->activeRoute['className'],

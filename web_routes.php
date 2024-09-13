@@ -12,4 +12,8 @@ $router->get('v1', '/get/:id', 'UserController', 'get');
 //SEARCH
 $router->post('v1', '/search', 'SearchController', 'search');
 
-$router->run();
+try {
+    $router->run();
+}catch (\Throwable $e) {
+    echo $e->getMessage();
+}
