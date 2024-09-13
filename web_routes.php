@@ -13,7 +13,7 @@ $router->get('v1', '/get/:id', 'UserController', 'get');
 $router->post('v1', '/search', 'SearchController', 'search');
 
 try {
-    $router->run();
+    echo $router->run();
 }catch (\Throwable $e) {
     echo $e->getMessage();
 }
